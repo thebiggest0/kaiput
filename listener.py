@@ -1,4 +1,3 @@
-import pyautogui
 from pynput.mouse import Listener
 
 # Mouse event handler
