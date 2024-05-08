@@ -104,14 +104,40 @@ class ImageApp:
 def main():
     root = tk.Tk()
     root.title("Image Viewer")
-    root.geometry("320x240")
 
+    # gui width x height and location
+    # root.geometry("320x240")
+
+    # width = 320
+    # height = 240
+    # width_screen = root.winfo_screenwidth()
+    # height_screen = root.winfo_screenheight()
+    # x_start = width_screen - width
+    # y_start = height_screen - height
+    # root.geometry(f"{width_screen}x{height_screen}+{x_start}+{y_start}")
+
+    screen_width = root.winfo_screenwidth()
+    screen_height = root.winfo_screenheight()
+
+    window_width = 320
+    window_height = 240
+    print(screen_width, screen_height)
+
+    x_coord = screen_width - window_width
+    y_coord = screen_height - window_height
+
+    root.geometry(f"{window_width}x{window_height}+{x_coord}+{y_coord}")  # Set geometry for bottom right corner
+
+    # no top menu
     root.overrideredirect(True)
+    # above all screens
+    root.attributes('-topmost', True)
 
     image_files = [f"image{i}.jpg" for i in range(1, 4)]
     idle_images = ["image_sleep1.jpg", "image_sleep2.jpg"]
     app = ImageApp(root, image_files, idle_images)
 
+    # exit
     root.mainloop()
 
 if __name__ == "__main__":
